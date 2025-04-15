@@ -1,27 +1,20 @@
+
 #include <iostream>
 #include"header.h"
+#include"registration.h"
 using namespace std;
+
+
+
+
 int main(){
 
 
 
-    /*Gun gun;
-        SubmachineGun gun_2;
-    
-        Gun* weapon = &gun_2;
-        weapon->shoot();*/
-    
-    
-        User* patient = new Patient;
-        User* doctor = new Doctor;
-    
-        doctor->registration();
-        
-    
-        // start menu 
-    
-        
-    
+    Registration reg;
+    reg.start();
+
+
     
 
     return 0;
