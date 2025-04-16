@@ -18,24 +18,40 @@ class Registration{
 
         int choise;
         cout<<"Welcome to our medical application!"<<endl;
-        cout<<"Who you are? \n1)Patient\n2)Doctor"<<endl;
-        cin >> choise;
+        
+        
 
 
 
         
         UserFactory* factory = nullptr;
 
-        switch (choise){
 
-            case 1:
-            factory = new PatientFactory();
-            break;
+        
 
-            case 2:
-            factory = new DoctorFactory();
+        while (true){
+            cout<<"Who you are? \n1)Patient\n2)Doctor"<<endl;
+            cin >> choise;
+            switch (choise){
+
+                case 1:
+                cout<<"Patient option was chosen"<<endl;
+                factory = new PatientFactory();
+                break;
+    
+                case 2:
+                cout<<"Doctor option was chosen"<<endl;
+                factory = new DoctorFactory();
+                break;
+                
+                default:
+                    cout<<"There is no such option. Please,choise again"<<endl<<endl;
+                    continue;
+    
+            }
             break;
         }
+        
 
         cout<< "Enter your name:"<<endl;
         cin>>name;

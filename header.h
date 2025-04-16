@@ -39,9 +39,15 @@ class User {
 
     void show_menu() override{
 
+        
+        int choise;
+        
         cout<<"Patient menu"<<endl;
 
- 
+        cout<<"\tChoise option:"<<endl<<endl;
+        cout<<"1.Medical history\n2.Recent analysies\n3.Book appoitment with doctor\n4.Change profile info\n5.Log out"<<endl;
+
+        
 
 
 
