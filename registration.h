@@ -1,5 +1,6 @@
 #include <iostream>
 #include"User_fabrics.h"
+#include<string>
 using namespace std;
 
 class Registration{
@@ -10,6 +11,51 @@ class Registration{
 
 
     public:
+
+
+
+
+    bool lenght_checker(string password){
+        if (password.length() >=8 ){
+
+            return 1;
+        }
+        return 0;
+
+
+    }
+
+    bool digit_checker(string password){
+        for (char ch : password ){
+            if (ch> '0' && ch <='9'){
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+
+    bool password_checher(string password){
+
+        if (lenght_checker(password) && digit_checker(password)){
+            return 1;
+
+        }
+        return 0;
+
+
+       
+
+
+
+        return false;
+
+
+
+
+    }
+
+
 
     void start(){
 
@@ -42,7 +88,7 @@ class Registration{
         while (true){
             cout<<"Enter new password"<<endl;
             cin>>password;
-            if (password == "111"){
+            if (password_checher(password)){
                 cout<<"Correct password"<<endl;
                 break;
             }
