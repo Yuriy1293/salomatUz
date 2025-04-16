@@ -1,6 +1,7 @@
 
 #pragma once
 #include <iostream>
+#include"Menu.h"
 using namespace std;
 
 
@@ -15,13 +16,23 @@ class User {
 
 
     public:
-        virtual void registration() = 0; // чисто виртуальная функция для регистрации 
-        virtual void show_menu() = 0; // чисто виртуальная функция для меню пользователей
 
+        Menu* menu;
+
+        virtual void registration() = 0; // чисто виртуальная функция для регистрации 
+        virtual void show_menu() = 0 ; // чисто виртуальная функция для регистрации 
+
+        
+
+
+
+        virtual ~User(){
+            delete menu;
+        }
 
         User(const string& n, const string&  s, const string& p) : name(n), surname(s), password(p) {}
 
-
+        
 
     };
     
@@ -29,27 +40,26 @@ class User {
  class Patient : public User{
     public:
     
+    Patient(const string& n, const string&  s, const string& p) : User(n, s, p) {
+
+        //создание обьекта меню для пациента при инициализации пациента. Реализовано в конструкторе, а не например в регистр чтобы не нарушать лог подход и метод ответсвтенности 
+        menu = new PatientMenu();
+
+    }
+
     void registration () override {
             cout << "Patient registration" << endl;
         
 
         }
-        Patient(const string& n, const string&  s, const string& p) : User(n, s, p) {}
-
+        
 
     void show_menu() override{
 
-        
-        int choise;
-        
-        cout<<"Patient menu"<<endl;
-
-        cout<<"\tChoise option:"<<endl<<endl;
-        cout<<"1.Medical history\n2.Recent analysies\n3.Book appoitment with doctor\n4.Change profile info\n5.Log out"<<endl;
-
-        
-
-
+        if (menu){
+            menu->show();
+        }
+       
 
 
     }
@@ -65,19 +75,28 @@ class User {
     
 class Doctor : public User {
     public:
-        void registration() override {
+        
+    Doctor(const string& n, const string&  s, const string& p) : User(n, s, p) {
+
+        //создание меню для доктора
+        menu = new PatientMenu();
+    }
+    
+    
+    void registration() override {
             cout << "Doctor registration" << endl;
 
             
         }
-        Doctor(const string& n, const string&  s, const string& p) : User(n, s, p) {}
-    
+        
 
 
         void show_menu() override{
 
-            cout<<"Doctor menu"<<endl;
-    
+            
+            if (menu){
+                menu->show();
+            }
     
         }
     };
