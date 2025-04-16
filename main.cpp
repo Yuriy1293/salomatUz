@@ -2,6 +2,7 @@
 #include <iostream>
 #include"header.h"
 #include"registration.h"
+#include".gitignore"
 using namespace std;
 
 
