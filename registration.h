@@ -6,7 +6,7 @@ using namespace std;
 class Registration{
 
     private:
-    string name, surname, password;
+    string name, surname, password, PINFL;
 
 
 
@@ -14,7 +14,7 @@ class Registration{
 
 
 
-
+    // checking for password lenght
     bool lenght_checker(string password){
         if (password.length() >=8 ){
 
@@ -22,9 +22,11 @@ class Registration{
         }
         return 0;
 
-
     }
 
+
+
+    //checking for digits in password
     bool digit_checker(string password){
         for (char ch : password ){
             if (ch> '0' && ch <='9'){
@@ -35,6 +37,7 @@ class Registration{
     }
 
 
+    // general password checker
     bool password_checher(string password){
 
         if (lenght_checker(password) && digit_checker(password)){
@@ -44,15 +47,38 @@ class Registration{
         return 0;
 
 
-       
 
 
+    }
 
-        return false;
+    // PINFL lenght checker
+    bool PINFL_lenght_checker(string PINFL){
+        if (PINFL.length() ==12 ){
+
+            return 1;
+        }
+        return 0;
+        
+    }
 
 
+    bool PINFL_digit_checker(string PINFL){
+        for (char ch : PINFL ){
+            if (ch < '0' || ch > '9'){
+                return 0;
+            }
+        }
+        return 1;
+    }
+
+    bool PINFL_checker(string PINFL){
+        if (PINFL_lenght_checker(PINFL) && PINFL_digit_checker(PINFL)){
+
+            return 1;
 
 
+        }
+        return 0;
     }
 
 
@@ -85,17 +111,36 @@ class Registration{
         cout<<"Enter your surname"<<endl;
         cin>>surname;
 
+        
+        while (true){
+            cout<<"Enter your PINFL (12 digits)"<<endl;
+            cin>>PINFL;
+            if (PINFL_checker(PINFL)){
+                cout<<"Correct PINFL"<<endl;
+                break;
+            }
+            else{
+                cout<<"Incorrect PINFL, please , try again"<<endl;
+            }
+    
+        }
+        
+        
+        
+        
+        
+        
+        cout<<"Now you need to set up your passport"<<endl;
         while (true){
             cout<<"Enter new password"<<endl;
             cin>>password;
-            if (password_checher(password)){
+            if (PINFL_checker(password)){
                 cout<<"Correct password"<<endl;
                 break;
             }
             else{
                 cout<<"Incorrect password, please , try again"<<endl;
             }
-    
     
         }
         
