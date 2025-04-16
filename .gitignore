@@ -1,0 +1,17 @@
+# Файлы сборки
+*.exe
+*.obj
+*.ilk
+*.pdb
+
+# Директории сборки
+Debug/
+Release/
+
+# Временные файлы IDE
+*.log
+*.tmp
+*.user
+*.suo
+*.ncb
+*.cache
