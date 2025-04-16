@@ -29,7 +29,7 @@ class Registration{
     //checking for digits in password
     bool digit_checker(string password){
         for (char ch : password ){
-            if (ch> '0' && ch <='9'){
+            if (ch>='0' && ch <='9'){
                 return 1;
             }
         }
@@ -130,11 +130,11 @@ class Registration{
         
         
         
-        cout<<"Now you need to set up your passport"<<endl;
+        cout<<"Now you need to set up your passwort"<<endl;
         while (true){
             cout<<"Enter new password"<<endl;
             cin>>password;
-            if (PINFL_checker(password)){
+            if (password_checher(password)){
                 cout<<"Correct password"<<endl;
                 break;
             }
@@ -146,6 +146,7 @@ class Registration{
         
         User* user = factory->create_user(name, surname, password);
         user->registration();
+        user->show_menu();
 
 
 
