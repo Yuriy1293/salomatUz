@@ -83,7 +83,7 @@ class Registration{
 
 
 
-    void start(){
+    User* start(){
 
         int choise;
         cout<<"Welcome to our medical application!"<<endl;
@@ -146,9 +146,13 @@ class Registration{
         
         User* user = factory->create_user(name, surname, password);
         user->registration();
-        user->show_menu();
+        
+        
+        
+        
+        
 
-
+        return user;
 
     }
 

@@ -12,9 +12,18 @@ int main(){
 
 
     Registration reg;
-    reg.start();
+    
+    User* user = reg.start();
+
+    if (user){
+        user->show_menu();
+    }
+    
+
+    delete user;
 
 
+    
     
 
     return 0;
